@@ -89,3 +89,6 @@ ENV/
 .ropeproject
 
 .vagrant
+
+mzm/.idea
+.idea
