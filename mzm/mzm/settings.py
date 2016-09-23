@@ -77,8 +77,15 @@ WSGI_APPLICATION = 'mzm.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.environ.get("MYSQL_DB_NAME"),
+        'ENGINE': 'django.db.backends.mysql',
+        'USER': os.environ.get("MYSQL_USER"),
+        'PASSWORD': os.environ.get("MYSQL_PASSWORD"),
+        'HOST': os.environ.get("MYSQL_HOST"),   # Or an IP Address that your DB is hosted on
+        'PORT': os.environ.get("MYSQL_PORT"),
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        },
     }
 }
 

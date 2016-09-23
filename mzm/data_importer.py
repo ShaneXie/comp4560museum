@@ -25,9 +25,9 @@ if __name__ == '__main__':
     book = xlrd.open_workbook("./data_seed/UMZM migratory bird specimens_Feb2015.xls")
     sh = book.sheet_by_index(0)
     print("{0} {1} {2}".format(sh.name, sh.nrows, sh.ncols))
-    for r in range(sh.nrows)[1:3]:
+    for r in range(sh.nrows)[1:]:
         data = sh.row(r)
-        print(data)
+        print(r)
         # print(xlrd.xldate.xldate_as_datetime(data[8].value, 0))
         bird = Bird(
             bid = int(data[0].value),
@@ -50,4 +50,5 @@ if __name__ == '__main__':
             burdock = intTryParse(data[17].value),
             wings = intTryParse(data[18].value)
         )
-        print(bird.save())
+        bird.save()
+    print("data saved to database.")
