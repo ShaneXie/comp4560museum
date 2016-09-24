@@ -1,3 +1,22 @@
 from django.db import models
 
-# Create your models here.
+class Bird(models.Model):
+    bid = models.IntegerField(default=0)
+    umzm = models.IntegerField(default=0)
+    type = models.CharField(max_length=100)
+    family = models.CharField(max_length=100)
+    common_name = models.CharField(max_length=100)
+    genus = models.CharField(max_length=100)
+    species = models.CharField(max_length=100)
+    aou = models.FloatField(default=0.0)
+    date = models.DateField()
+    prov = models.CharField(max_length=100)
+    city = models.CharField(max_length=100)
+    sex = models.CharField(max_length=100)
+    fate = models.CharField(max_length=100)
+    mount = models.IntegerField(default=0)
+    nest = models.IntegerField(default=0)
+    egg = models.IntegerField(default=0)
+    model = models.IntegerField(default=0)
+    burdock = models.IntegerField(default=0)
+    wings = models.IntegerField(default=0)

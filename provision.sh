@@ -27,6 +27,7 @@ sudo python3.5 /tmp/get-pip.py
 cd /home/vagrant/museum
 sudo pip install -r requirements.txt
 
-# python3.5 manage.py migrate
+cd ./mzm
+python3.5 manage.py migrate
 
-# echo "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@430.io', 'hahuahura')" | python3.5 manage.py shell
+echo "from django.contrib.auth.models import User; User.objects.create_superuser('admin', 'admin@mzm.io', 'robin')" | python3.5 manage.py shell
