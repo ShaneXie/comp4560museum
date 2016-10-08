@@ -12,13 +12,15 @@ import { XLarge } from './x-large';
   providers: [
   ],
   // Our list of styles in our component. We may add more to compose many styles together
-  styleUrls: [ './home.component.css' ],
+  styles: [ require('./home.component.scss') ],
   // Every Angular template is first compiled by the browser before Angular runs it's compiler
   templateUrl: './home.component.html'
 })
 export class Home {
   // Set our default values
   localState = { value: '' };
+  umLogo = 'assets/img/umlogo.gif';
+  umsciLogo = 'assets/img/uofm_sci_logo.png';
   // TypeScript public modifiers
   constructor(public appState: AppState) {
 

@@ -21,7 +21,7 @@ const ContextReplacementPlugin = require('webpack/lib/ContextReplacementPlugin')
  */
 const HMR = helpers.hasProcessFlag('hot');
 const METADATA = {
-  title: 'Angular2 Webpack Starter by @gdi2290 from @AngularClass',
+  title: 'University of Manitoba Science Nature Museum',
   baseUrl: '/',
   isDevServer: helpers.isWebpackDevServer()
 };
@@ -155,6 +155,12 @@ module.exports = function(options) {
         {
           test: /\.css$/,
           loaders: ['to-string-loader', 'css-loader']
+        },
+
+        {
+          test: /\.scss$/,
+          exclude: /node_modules/,
+          loader: 'raw-loader!sass-loader'
         },
 
         /* Raw loader support for *.html
