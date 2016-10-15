@@ -106,8 +106,11 @@ class Occurrence(models.Model):
     #  Examples: "egg", "eft", "juvenile", "adult", "2 adults 4 juveniles"
     reproductiveCondition = models.CharField(max_length = 100)
     #  Examples" "non-reproductive", "pregnant", "in bloom", "fruit-bearing".
+
+class root(models.Model):
     eventID = models.ForeignKey(Event)
     locationID = models.ForeignKey(Location)
     identificationID = models.ForeignKey(Identification)
     taxonID = models.ForeignKey(Taxon)
-
+    occurrenceID = models.ForeignKey(Occurrence)
+    roottype = models.CharField(max_length=40)
