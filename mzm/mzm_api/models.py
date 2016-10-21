@@ -62,7 +62,7 @@ class Taxon(models.Model):
     #  Examples: "Animalia", "Plantae". 
     phylum = models.CharField(max_length = 100)
     #  Examples: "Chordata" (phylum), "Bryophyta" (division). 
-    Taxonclass  = models.CharField(max_length = 100)
+    taxon_class  = models.CharField(db_column='class', max_length = 100)
     order = models.CharField(max_length = 100)
     family = models.CharField(max_length = 100)
     genus = models.CharField(max_length = 100)
@@ -113,4 +113,4 @@ class root(models.Model):
     identificationID = models.ForeignKey(Identification)
     taxonID = models.ForeignKey(Taxon)
     occurrenceID = models.ForeignKey(Occurrence)
-    roottype = models.CharField(max_length=40)
+    type = models.CharField(max_length=40)
