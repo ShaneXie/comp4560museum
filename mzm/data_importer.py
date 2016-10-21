@@ -15,7 +15,7 @@ if __name__ == '__main__':
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "mzm.settings")
     django.setup()
 
-    from mzm_api.models import Taxon, Occurrence, Location, Event, root, Identification
+    from mzm_api.models import Taxon, Occurrence, Location, Event, Root, Identification
     # if len(sys.argv) < 3:
     #     sys.exit('Usage: %s database-name file-name' % sys.argv[0])
 
@@ -25,7 +25,7 @@ if __name__ == '__main__':
     book = xlrd.open_workbook("./data_seed/UMZM migratory bird specimens_Feb2015.xls")
     sh = book.sheet_by_index(0)
     print("{0} {1} {2}".format(sh.name, sh.nrows, sh.ncols))
-    for r in range(sh.nrows)[1:]:
+    for r in range(sh.nrows)[2:]:
         data = sh.row(r)
         print(r)
         # print(xlrd.xldate.xldate_as_datetime(data[8].value, 0))
@@ -34,9 +34,9 @@ if __name__ == '__main__':
         occurrence = Occurrence.objects.create(catalogNumber=data[7].value,
                                                sex=data[11].value, lifeStage = str(data[12].value))
         location = Location.objects.create(stateProvince=data[9].value, locality=data[10].value)
-        event = Event.objects.create(eventDate=xlrd.xldate.xldate_as_datetime(data[8].value, 0))
-        identification = Identification.objects.create(identificationID=data[0].value)
-        root = root(
+        event = Event.objects.create(eventDate=xlrd.xldate.xldate_as_datetime(data[8].value, 1))
+        identification = Identification.objects.create(identificationID=int(data[0].value))
+        root = Root(
             eventID=event,
             locationID = location,
             identificationID = identification,
