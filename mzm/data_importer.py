@@ -55,5 +55,5 @@ if __name__ == '__main__':
             occurrenceID = occurrence,
             type = data[2].value
         )
-        #root.save()
+        root.save()
     print("data saved to database.")
