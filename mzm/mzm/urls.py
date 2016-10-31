@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from mzm_api import views as api_views
 
 urlpatterns = [
+    url(r'^$',api_views.index),
     url(r'^admin/', admin.site.urls),
 ]
