@@ -1,0 +1,19 @@
+# configuration of the server
+# copy and paste this file in the same folder, rename the file to remove .example extension
+# then change config to real value on the server
+# soft link the file in to nginx `site_enabled` foolder, or copy to that folder.
+
+server {
+    # the port your site will be served on
+    listen      80;
+    # the domain name it will serve for
+    server_name ebony.cs.umanitoba.com; # substitute your machine's IP address or FQDN
+    charset     utf-8;
+
+
+    # Finally, send all non-media requests to the Django server.
+    location / {
+        uwsgi_pass  127.0.0.1:9630;  # uwsgi addr and port
+        include     /path/to/uwsgi_params; # path to the uwsgi_params file
+    }
+}

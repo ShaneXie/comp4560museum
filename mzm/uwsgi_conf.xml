@@ -1,0 +1,6 @@
+<uwsgi>
+    <socket>:9630</socket>
+    <module>mzm.wsgi</module>
+    <processes>5</processes>
+    <daemonize>uwsgi.log</daemonize>
+</uwsgi>
