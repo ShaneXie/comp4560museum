@@ -16,4 +16,8 @@ server {
         uwsgi_pass  127.0.0.1:9630;  # uwsgi addr and port
         include     /path/to/uwsgi_params; # path to the uwsgi_params file
     }
+
+    location /static/ {
+        alias /usr/local/lib/python3.5/dist-packages/django/contrib/admin/static/;
+    }
 }
