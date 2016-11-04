@@ -17,7 +17,8 @@ import { AppState, InternalStateType } from './app.service';
 import { Home } from './home';
 import { About } from './about';
 import { NoContent } from './no-content';
-import { XLarge } from './home/x-large';
+import { MzmHeader } from './header/header.component';
+import { MzmNav } from './nav/nav.component';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -41,7 +42,8 @@ type StoreType = {
     About,
     Home,
     NoContent,
-    XLarge
+    MzmHeader,
+    MzmNav
   ],
   imports: [ // import Angular's modules
     BrowserModule,
