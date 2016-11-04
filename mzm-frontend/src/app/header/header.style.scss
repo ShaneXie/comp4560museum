@@ -1,0 +1,22 @@
+/*styles for header*/
+:host {
+    height: 120px;
+    width: 100%;
+    background-color: #e5950a;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+    .logo {
+        height: 90%;
+        &--sci {
+            height: 60%;
+        }
+    }
+
+    .title {
+        font-size: 2.2rem;
+        color: #E0E0E0;
+    }
+}

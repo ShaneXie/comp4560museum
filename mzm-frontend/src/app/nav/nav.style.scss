@@ -1,0 +1,28 @@
+/*styles for nav*/
+:host {
+    height: 40px;
+    width: 100%;
+    background-color: #693817;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .nav-item {
+        color: #e5950a;
+        border-bottom: #e5950a solid 2px;
+        height: 38px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 0 20px;
+        cursor: pointer;
+        transition: all 0.5s ease;
+
+        &:hover {
+            background-color: #e5950a;
+            color: #693817;
+        }
+    }
+}
