@@ -24,5 +24,18 @@
             background-color: #e5950a;
             color: #693817;
         }
+
+        &--dropdown {
+            position: relative;
+
+            &:hover .nav-item--dropdown-items {
+                display: flex;
+            }
+        }
+
+        &--dropdown-items {
+            display: none;
+            position: absolute;
+        }
     }
 }

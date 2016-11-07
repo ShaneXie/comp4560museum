@@ -19,6 +19,7 @@ import { About } from './about';
 import { NoContent } from './no-content';
 import { MzmHeader } from './header/header.component';
 import { MzmNav } from './nav/nav.component';
+import { MzmFooter } from './footer/footer.component';
 
 // Application wide providers
 const APP_PROVIDERS = [
@@ -43,6 +44,7 @@ type StoreType = {
     Home,
     NoContent,
     MzmHeader,
+    MzmFooter,
     MzmNav
   ],
   imports: [ // import Angular's modules
