@@ -1,0 +1,13 @@
+/*styles for header*/
+:host {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    border-top: 1px #693817 solid;
+    border-bottom: 1px #693817 solid;
+    font-size: 0.8rem;
+    align-self: flex-end;
+}

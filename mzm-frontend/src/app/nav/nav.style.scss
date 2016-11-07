@@ -12,6 +12,7 @@
         color: #e5950a;
         border-bottom: #e5950a solid 2px;
         height: 38px;
+        min-width: 100px;
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -23,6 +24,29 @@
         &:hover {
             background-color: #e5950a;
             color: #693817;
+        }
+
+        &--dropdown {
+            position: relative;
+
+            &:hover .nav-item--dropdown-items {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                transition: all 0.6 ease;
+            }
+        }
+
+        &--dropdown-items {
+            display: none;
+            position: absolute;
+            top: 38px;
+
+            .dropdown-item {
+                color: #494847;
+                background-color: rgba(229,149,10,0.5);
+            }
         }
     }
 }
