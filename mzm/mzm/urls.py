@@ -17,9 +17,11 @@ from django.conf.urls import url
 from django.contrib import admin
 from mzm_api import views as api_views
 from rest_framework import routers
+from rest_framework.urlpatterns import format_suffix_patterns
 
 urlpatterns = [
     url(r'^$',api_views.index),
     url(r'^admin/', admin.site.urls),
     url(r'^api/(?P<pk>[0-9]+)/$',api_views.Occurrence_detail ),
 ]
+urlpatterns = format_suffix_patterns(urlpatterns)
