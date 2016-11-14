@@ -1,6 +1,9 @@
 from django.db import models
+from pygments.lexers import get_lexer_by_name
+from pygments.formatters.html import HtmlFormatter
+from pygments import highlight
 
-    
+
 class Identification(models.Model):
     identificationID = models.AutoField(max_length=100,primary_key=True)
     #  An identifier for the Identification (the body of information associated with the assignment of a scientific name). May be a global unique identifier or an identifier specific to the data set.
@@ -39,7 +42,7 @@ class Location(models.Model):
     verbatimLatitude = models.CharField(max_length = 100, null=True)
     #  Example: "41 05 54.03S".
     verbatimLongitude  = models.CharField(max_length = 100, null=True)
-    #  Example: "121d 10' 34" W". 
+    #  Example: "121d 10' 34" W".
     verbatimCoordinateSystem = models.CharField(max_length = 100, null=True)
     #  Examples: "decimal degrees", "degrees decimal minutes", "degrees minutes seconds"
     verbatimSRS = models.CharField(max_length = 100, null=True)
@@ -59,9 +62,9 @@ class Taxon(models.Model):
     acceptedNameUsage = models.CharField(max_length = 255, null=True)
     #  Example: "Tamias minimus" valid name for "Eutamias minimus".
     kingdom = models.CharField(max_length = 100, null=True)
-    #  Examples: "Animalia", "Plantae". 
+    #  Examples: "Animalia", "Plantae".
     phylum = models.CharField(max_length = 100, null=True)
-    #  Examples: "Chordata" (phylum), "Bryophyta" (division). 
+    #  Examples: "Chordata" (phylum), "Bryophyta" (division).
     taxon_class  = models.CharField(db_column='class', max_length = 100, null=True)
     order = models.CharField(max_length = 100, null=True)
     family = models.CharField(max_length = 100, null=True)
@@ -106,6 +109,21 @@ class Occurrence(models.Model):
     #  Examples: "egg", "eft", "juvenile", "adult", "2 adults 4 juveniles"
     reproductiveCondition = models.CharField(max_length = 100)
     #  Examples" "non-reproductive", "pregnant", "in bloom", "fruit-bearing".
+    owner = models.ForeignKey('auth.User', related_name='Occurrence', on_delete=models.CASCADE)
+    # highlighted = models.TextField()
+
+    # def save(self, *args, **kwargs):
+    #     """
+    #     Use the `pygments` library to create a highlighted HTML
+    #     representation of the code snippet.
+    #     """
+    #     lexer = get_lexer_by_name(self.language)
+    #     # linenos = self.linenos and 'table' or False
+    #     options = self.occurrenceID and {'occurrenceID': self.occurrenceID} or {}
+    #     formatter = HtmlFormatter(sex=self.sex, collectionCode=self.collectionCode,
+    #                               full=True, **options)
+    #     self.highlighted = highlight(self.catalogNumber, collectionCode, datasetName)
+    #     super(Occurrence, self).save(*args, **kwargs)
 
 class Root(models.Model):
     eventID = models.ForeignKey(Event, null=True)

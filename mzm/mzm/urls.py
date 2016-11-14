@@ -16,12 +16,30 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from mzm_api import views as api_views
+from mzm_api.views import OccurrenceViewSet
 from rest_framework import routers
 from rest_framework.urlpatterns import format_suffix_patterns
+from rest_framework import renderers
+
+
+Occurrence_list = OccurrenceViewSet.as_view({
+    'get': 'list',
+    'post': 'create'
+})
+Occurrence_detail = OccurrenceViewSet.as_view({
+    'get': 'retrieve',
+    # 'put': 'update',
+    # 'patch': 'partial_update',
+    # 'delete': 'destroy'
+})
+Occurrence_highlight = OccurrenceViewSet.as_view({
+    'get': 'highlight'
+}, renderer_classes=[renderers.StaticHTMLRenderer])
 
 urlpatterns = [
     url(r'^$',api_views.index),
     url(r'^admin/', admin.site.urls),
-    url(r'^api/(?P<pk>[0-9]+)/$',api_views.Occurrence_detail ),
+    url(r'^api/(?P<pk>[0-9]+)/$',Occurrence_detail,name="Occurrence_detail"),
+    url(r'^api/$',Occurrence_detail,name="Occurrence_detail"),
 ]
 urlpatterns = format_suffix_patterns(urlpatterns)
