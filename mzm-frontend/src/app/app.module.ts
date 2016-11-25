@@ -15,7 +15,7 @@ import { App } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { Home } from './home';
-import { About } from './about';
+import { Collection } from './collection';
 import { NoContent } from './no-content';
 import { MzmHeader } from './header/header.component';
 import { MzmNav } from './nav/nav.component';
@@ -40,8 +40,8 @@ type StoreType = {
   bootstrap: [ App ],
   declarations: [
     App,
-    About,
     Home,
+    Collection,
     NoContent,
     MzmHeader,
     MzmFooter,
