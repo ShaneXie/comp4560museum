@@ -15,14 +15,20 @@ class OccurrenceSerializer(serializers.ModelSerializer):
     # owner = User.ForeignKey('auth.User', related_name='Occurrence')
     owner = serializers.ReadOnlyField(source='owner.username')
     # highlighted = models.TextField()
-    highlight = serializers.HyperlinkedIdentityField(view_name='Occurrence-highlight', format='html')
+    # highlight = serializers.HyperlinkedIdentityField(view_name='Occurrence-highlight', format='html')
 
     class Meta:
         model = Occurrence
         fields = ("occurrenceID","bibliographicCitation","datasetName",
         "collectionCode","catalogNumber","occurenceRemarks",
         "recordNumber","recordedBy","associatedMedia","preparations",
-        "sex","lifeStage","reproductiveCondition")
+        "sex","lifeStage","reproductiveCondition","owner")
+
+class RootSerializer(serializers.ModelSerializer):
+    # owner = serializers.ReadOnlyField(source='owner.username')
+    class Meta:
+        model = Root
+        fields = ("eventID","locationID","identificationID","taxonID","occurrenceID")
 
 
 class UserSerializer(serializers.ModelSerializer):

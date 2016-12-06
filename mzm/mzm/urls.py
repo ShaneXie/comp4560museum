@@ -16,7 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 from django.contrib import admin
 from mzm_api import views as api_views
-from mzm_api.views import OccurrenceViewSet
+from mzm_api.views import OccurrenceViewSet,RootViewSet,UserViewSet
 from rest_framework import routers
 from rest_framework.urlpatterns import format_suffix_patterns
 from rest_framework import renderers
@@ -24,7 +24,7 @@ from rest_framework import renderers
 
 Occurrence_list = OccurrenceViewSet.as_view({
     'get': 'list',
-    'post': 'create'
+    # 'post': 'create'
 })
 Occurrence_detail = OccurrenceViewSet.as_view({
     'get': 'retrieve',
@@ -32,14 +32,23 @@ Occurrence_detail = OccurrenceViewSet.as_view({
     # 'patch': 'partial_update',
     # 'delete': 'destroy'
 })
-Occurrence_highlight = OccurrenceViewSet.as_view({
-    'get': 'highlight'
-}, renderer_classes=[renderers.StaticHTMLRenderer])
+Root_list = RootViewSet.as_view({
+    'get': 'list',
+    # 'post': 'create'
+})
+Root_detail = RootViewSet.as_view({
+    'get': 'retrieve',
+    # 'put': 'update',
+    # 'patch': 'partial_update',
+    # 'delete': 'destroy'
+})
 
 urlpatterns = [
     url(r'^$',api_views.index),
     url(r'^admin/', admin.site.urls),
     url(r'^api/(?P<pk>[0-9]+)/$',Occurrence_detail,name="Occurrence_detail"),
-    url(r'^api/$',Occurrence_detail,name="Occurrence_detail"),
+    # url(r'^adi/$',Root_list,name="Root_list"),
+    url(r'^adi/$',Occurrence_list,name="Occurrence_list"),
+    # url(r'^aui/(?P<pk>[0-9]+)/$',User_detail,name="User_detail"),
 ]
-urlpatterns = format_suffix_patterns(urlpatterns)
+# urlpatterns = format_suffix_patterns(urlpatterns)
