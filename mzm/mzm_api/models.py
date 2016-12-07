@@ -109,7 +109,7 @@ class Occurrence(models.Model):
     #  Examples: "egg", "eft", "juvenile", "adult", "2 adults 4 juveniles"
     reproductiveCondition = models.CharField(max_length = 100)
     #  Examples" "non-reproductive", "pregnant", "in bloom", "fruit-bearing".
-    owner = models.ForeignKey('auth.User', related_name='Occurrence', on_delete=models.CASCADE)
+    # owner = models.ForeignKey('auth.User', related_name='Occurrence', on_delete=models.CASCADE)
     # highlighted = models.TextField()
 
     # def save(self, *args, **kwargs):

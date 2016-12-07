@@ -29,11 +29,40 @@ class RootSerializer(serializers.ModelSerializer):
     class Meta:
         model = Root
         fields = ("eventID","locationID","identificationID","taxonID","occurrenceID")
-
-
-class UserSerializer(serializers.ModelSerializer):
-    Occurrence = serializers.PrimaryKeyRelatedField(many=True, queryset=Occurrence.objects.all())
-
+class EventSerializer(serializers.ModelSerializer):
+    # owner = serializers.ReadOnlyField(source='owner.username')
     class Meta:
-        model = User
-        fields = ('id', 'username', 'Occurrence')
+        model = Event
+        fields = ("eventID","eventDate","verbatimEventDate","habitat","samplingProtocol")
+class LocationSerializer(serializers.ModelSerializer):
+    # owner = serializers.ReadOnlyField(source='owner.username')
+    class Meta:
+        model = Location
+        fields = (
+            "locationID","stateProvince","country","municipality",
+            "locality","verbatimElevation","minimumElevationInMeters",
+            "verbatimCoordinates","verbatimLatitude","verbatimLongitude",
+            "verbatimCoordinateSystem","verbatimSRS","decimalLatitude",
+            "decimalLongitude","geodeticDatum","coordinateUncertaintyInMeters"
+        )
+
+class IdentificationSerializer(serializers.ModelSerializer):
+    # owner = serializers.ReadOnlyField(source='owner.username')
+    class Meta:
+        model = Identification
+        fields = ("identificationID","identifiedBy")
+class TaxonSerializer(serializers.ModelSerializer):
+    # owner = serializers.ReadOnlyField(source='owner.username')
+    class Meta:
+        model = Taxon
+        fields = ("taxonID","scientificNameID","kingdom","phylum","taxon_class",
+        "order","family","genus","subgenus","specificEpithet","taxonRank",
+        "verbatimTaxonRank","scientificNameAuthorship")
+
+
+# class UserSerializer(serializers.ModelSerializer):
+#     Occurrence = serializers.PrimaryKeyRelatedField(many=True, queryset=Occurrence.objects.all())
+#
+#     class Meta:
+#         model = User
+#         fields = ('id', 'username', 'Occurrence')
