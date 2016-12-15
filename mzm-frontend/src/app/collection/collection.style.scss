@@ -18,6 +18,12 @@
     align-items: center;
 }
 
+.collectionHeader {
+    .collectionTitle {
+        text-transform: uppercase;
+    }
+}
+
 .tableContainer {
     width: 100%;
     min-height: 200px;

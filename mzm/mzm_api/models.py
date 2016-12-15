@@ -114,3 +114,4 @@ class Root(models.Model):
     taxonID = models.ForeignKey(Taxon, null=True)
     occurrenceID = models.ForeignKey(Occurrence, null=True)
     type = models.CharField(max_length=40, null=True)
+    collectionName = models.CharField(max_length=40)
