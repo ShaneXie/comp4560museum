@@ -10,8 +10,5 @@ export const ROUTES: Routes = [
   { path: '',      component: Home },
   { path: 'home',  component: Home },
   { path: 'collection/:collectionName', component: Collection },
-  {
-    path: 'detail', loadChildren: () => System.import('./+detail')
-  },
   { path: '**',    component: NoContent },
 ];
