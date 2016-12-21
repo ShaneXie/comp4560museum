@@ -21,10 +21,13 @@ import { MzmHeader } from './header/header.component';
 import { MzmNav } from './nav/nav.component';
 import { MzmFooter } from './footer/footer.component';
 
+import { DataService } from './services/data.service';
+
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,
-  AppState
+  AppState,
+  DataService
 ];
 
 type StoreType = {

@@ -2,7 +2,15 @@
   <mzm-header></mzm-header>
   <mzm-nav></mzm-nav>
   <div class="collectionHeader">
-    <h2 class="collectionTitle">{{ collectionName }} Collection</h2>
+    <h3 class="collectionTitle">{{ collectionName }} Collection</h3>
+    <div class="tableControll">
+      <div class="rowsControll">
+        <div class="rowsNumber">20</div>
+        <div class="rowsNumber">50</div>
+        <div class="rowsNumber">100</div>
+        <span>rows</span>
+      </div>
+    </div>
   </div>
   <div class="tableContainer">
     <table class="mzm-table">
@@ -15,41 +23,14 @@
         <th>stateProvince</th>
         <th>eventDate</th>
       </tr>
-      <tr>
-        <td>123</td>
-        <td>bird</td>
-        <td>011.1</td>
-        <td>dead</td>
-        <td>on the sea</td>
-        <td>MB</td>
-        <td>1999</td>
-      </tr>
-      <tr>
-        <td>123</td>
-        <td>bird</td>
-        <td>011.1</td>
-        <td>dead</td>
-        <td>on the sea</td>
-        <td>MB</td>
-        <td>1999</td>
-      </tr>
-      <tr>
-        <td>123</td>
-        <td>bird</td>
-        <td>011.1</td>
-        <td>dead</td>
-        <td>on the sea</td>
-        <td>MB</td>
-        <td>1999</td>
-      </tr>
-      <tr>
-        <td>123</td>
-        <td>bird</td>
-        <td>011.1</td>
-        <td>dead</td>
-        <td>on the sea</td>
-        <td>MB</td>
-        <td>1999</td>
+      <tr *ngFor="let co of collections" class="mzm-row">
+        <td>{{ co.identification.identificationID }}</td>
+        <td>{{ co.taxon.specificEpithet }}</td>
+        <td>{{ co.occurrence.catalogNumber }}</td>
+        <td>{{ co.occurrence.lifeStage }}</td>
+        <td>{{ co.location.locality }}</td>
+        <td>{{ co.location.stateProvince }}</td>
+        <td>{{ co.event.eventDate | date:'mediumDate'}}</td>
       </tr>
     </table>
   </div>

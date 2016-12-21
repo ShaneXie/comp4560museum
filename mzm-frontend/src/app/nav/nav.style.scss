@@ -45,7 +45,12 @@
 
             .dropdown-item {
                 color: #494847;
-                background-color: rgba(229,149,10,0.5);
+                background-color: rgba(229,149,10,0.6);
+
+                &:hover {
+                    color: white;
+                    background-color: rgba(229,149,10,0.93);
+                }
             }
         }
     }
