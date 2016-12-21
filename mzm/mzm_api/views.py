@@ -12,7 +12,10 @@ def collection(request, collection_name='no_name'):
 		offset = int(request.GET.get('offset', 0))
 		limit = int(request.GET.get('limit', 20))
 
-		collections = Root.objects.filter(collectionName=collection_name)[offset:offset+limit]
+		collection_by_name = Root.objects.filter(collectionName=collection_name)
+		collections = collection_by_name[offset:offset+limit]
+		col_count = collection_by_name.count()
+
 		col_list = []
 
 		for co in collections:
@@ -20,7 +23,6 @@ def collection(request, collection_name='no_name'):
 			col['id'] = co.id
 			col['type'] = co.type
 			col['collectionName'] = co.collectionName
-			print(serializers.serialize("json", [co.eventID]))
 			col['event'] = json.loads(serializers.serialize("json", [co.eventID]))[0]['fields']
 			col['event']['eventID'] = co.eventID.eventID
 			col['location'] = json.loads(serializers.serialize("json", [co.locationID]))[0]['fields']
@@ -33,6 +35,6 @@ def collection(request, collection_name='no_name'):
 			col['occurrence']['occurrenceID'] = co.occurrenceID.occurrenceID
 
 			col_list.append(col)
-		return JsonResponse({'error':0, 'result':col_list})
+		return JsonResponse({'error':0, 'total':col_count//limit, 'current':(offset+limit)/limit, 'result':col_list})
 	else:
 		return JsonResponse({'error': 'wrong request method'})

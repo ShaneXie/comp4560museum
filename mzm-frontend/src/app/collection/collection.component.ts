@@ -13,29 +13,47 @@ import { DataService } from '../services/data.service'
 export class Collection {
   public collectionName: string;
   public collections: Array<any>;
+  public currentPage: number;
+  public totalPage: number;
+  private limit: number;
+  private offset: number;
 
   constructor(
     private route: ActivatedRoute,
     private dataService: DataService
   ){
     this.collectionName = "";
+    this.limit = 20;
+    this.offset = 0;
   }
 
   ngOnInit() {
     this.route.params
       .subscribe((params: Params) => {
         this.collectionName = params['collectionName'];
-        this.getCollections(this.collectionName, 0, 20);
+        this.getCollections(this.collectionName);
         console.log(this.collectionName);
       });
   }
 
-  getCollections(collectionName: string, offset: number, limit: number): void {
+  getCollections(collectionName: string): void {
     this.dataService
-        .getCollections(collectionName, offset, limit)
+        .getCollections(collectionName, this.offset, this.limit)
         .then(data => {
-          this.collections = data.result
-          console.log(data);
+          this.collections = data.result;
+          this.currentPage = data.current;
+          this.totalPage = data.total;
         });
+  }
+
+  setLimit(limit: number): void {
+    this.limit = limit;
+    this.getCollections(this.collectionName);
+  }
+
+  changePage(di: number): void {
+    this.offset += di*this.limit;
+    this.offset = this.offset < 0? 0: this.offset;
+    this.getCollections(this.collectionName);
   }
 }

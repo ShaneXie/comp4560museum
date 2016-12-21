@@ -5,10 +5,15 @@
     <h3 class="collectionTitle">{{ collectionName }} Collection</h3>
     <div class="tableControll">
       <div class="rowsControll">
-        <div class="rowsNumber">20</div>
-        <div class="rowsNumber">50</div>
-        <div class="rowsNumber">100</div>
-        <span>rows</span>
+        <span>rows: </span>
+        <div class="rowsNumber" (click)="setLimit(20)">20</div>
+        <div class="rowsNumber" (click)="setLimit(50)">50</div>
+        <div class="rowsNumber" (click)="setLimit(100)">100</div>
+      </div>
+      <div class="pageControll">
+        <div class="mzm-btn" (click)="changePage(-1)">&#8592;</div>
+        <span>{{currentPage}}/{{totalPage}}</span>
+        <div class="mzm-btn" (click)="changePage(1)">&#8594;</div>
       </div>
     </div>
   </div>
