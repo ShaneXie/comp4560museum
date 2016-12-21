@@ -19,5 +19,6 @@ from mzm_api import views as api_views
 
 urlpatterns = [
     url(r'^$',api_views.index),
+    url(r'^collection/(?P<collection_name>\w+)/$',api_views.collection),
     url(r'^admin/', admin.site.urls),
 ]

@@ -8,7 +8,51 @@ html, body{
 }
 
 .main {
-  height: 100vh;
+  min-height: 100vh;
   width: 100vw;
   background-color: $gray-200;
+}
+
+.mzm-table {
+  border-collapse: collapse;
+  width: 100%;
+
+  th, td {
+    text-align: left;
+    padding: 8px;
+  }
+
+  .mzm-row {
+    cursor: pointer;
+    &:hover {
+      background-color: #DCEDC8;
+      transition: all 0.5s ease;
+    }
+  }
+
+  tr:nth-child(even){background-color: #f2f2f2}
+
+  th {
+    background-color: #4CAF50;
+    color: white;
+  }
+}
+
+.mzm-btn {
+  color: #e5950a;
+  background-color: #693817;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px;
+  margin: 5px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+
+  &:hover {
+      background-color: #e5950a;
+      color: #693817;
+  }
 }

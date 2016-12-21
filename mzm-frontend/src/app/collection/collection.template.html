@@ -1,0 +1,43 @@
+<div class="home-container">
+  <mzm-header></mzm-header>
+  <mzm-nav></mzm-nav>
+  <div class="collectionHeader">
+    <h3 class="collectionTitle">{{ collectionName }} Collection</h3>
+    <div class="tableControll">
+      <div class="rowsControll">
+        <span>rows: </span>
+        <div class="rowsNumber" (click)="setLimit(20)">20</div>
+        <div class="rowsNumber" (click)="setLimit(50)">50</div>
+        <div class="rowsNumber" (click)="setLimit(100)">100</div>
+      </div>
+      <div class="pageControll">
+        <div class="mzm-btn" (click)="changePage(-1)">&#8592;</div>
+        <span>{{currentPage}}/{{totalPage}}</span>
+        <div class="mzm-btn" (click)="changePage(1)">&#8594;</div>
+      </div>
+    </div>
+  </div>
+  <div class="tableContainer">
+    <table class="mzm-table">
+      <tr>
+        <th>identification</th>
+        <th>specificEpithet</th>
+        <th>catalogNumber</th>
+        <th>lifeStage</th>
+        <th>locality</th>
+        <th>stateProvince</th>
+        <th>eventDate</th>
+      </tr>
+      <tr *ngFor="let co of collections" class="mzm-row">
+        <td>{{ co.identification.identificationID }}</td>
+        <td>{{ co.taxon.specificEpithet }}</td>
+        <td>{{ co.occurrence.catalogNumber }}</td>
+        <td>{{ co.occurrence.lifeStage }}</td>
+        <td>{{ co.location.locality }}</td>
+        <td>{{ co.location.stateProvince }}</td>
+        <td>{{ co.event.eventDate | date:'mediumDate'}}</td>
+      </tr>
+    </table>
+  </div>
+  <mzm-footer></mzm-footer>
+</div>
