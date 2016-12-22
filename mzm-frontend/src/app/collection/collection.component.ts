@@ -48,12 +48,18 @@ export class Collection {
 
   setLimit(limit: number): void {
     this.limit = limit;
+    this.offset = 0;
     this.getCollections(this.collectionName);
   }
 
   changePage(di: number): void {
     this.offset += di*this.limit;
-    this.offset = this.offset < 0? 0: this.offset;
+    if(this.offset<0){
+      this.offset = 0
+    } else if (this.offset/this.limit > this.totalPage) {
+      this.offset = this.totalPage * this.limit;
+      this.currentPage -= 1;
+    }
     this.getCollections(this.collectionName);
   }
 }

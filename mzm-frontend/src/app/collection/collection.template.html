@@ -6,9 +6,9 @@
     <div class="tableControll">
       <div class="rowsControll">
         <span>rows: </span>
-        <div class="rowsNumber" (click)="setLimit(20)">20</div>
-        <div class="rowsNumber" (click)="setLimit(50)">50</div>
-        <div class="rowsNumber" (click)="setLimit(100)">100</div>
+        <div class="rowsNumber" [ngClass]="{currentRowNumber: limit==20}" (click)="setLimit(20)">20</div>
+        <div class="rowsNumber" [ngClass]="{currentRowNumber: limit==50}" (click)="setLimit(50)">50</div>
+        <div class="rowsNumber" [ngClass]="{currentRowNumber: limit==100}" (click)="setLimit(100)">100</div>
       </div>
       <div class="pageControll">
         <div class="mzm-btn" (click)="changePage(-1)">&#8592;</div>

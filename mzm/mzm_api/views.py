@@ -23,12 +23,22 @@ def collection(request, collection_name='no_name'):
 			col['id'] = co.id
 			col['type'] = co.type
 			col['collectionName'] = co.collectionName
-			col['event'] = json.loads(serializers.serialize("json", [co.eventID]))[0]['fields']
-			col['event']['eventID'] = co.eventID.eventID
+
+			if co.eventID != None:
+				col['event'] = json.loads(serializers.serialize("json", [co.eventID]))[0]['fields']
+				col['event']['eventID'] = co.eventID.eventID
+			else:
+				col['event'] = {}
+
 			col['location'] = json.loads(serializers.serialize("json", [co.locationID]))[0]['fields']
 			col['location']['locationID'] = co.locationID.locationID
-			col['identification'] = json.loads(serializers.serialize("json", [co.identificationID]))[0]['fields']
-			col['identification']['identificationID'] = co.identificationID.identificationID
+
+			if co.identificationID != None:
+				col['identification'] = json.loads(serializers.serialize("json", [co.identificationID]))[0]['fields']
+				col['identification']['identificationID'] = co.identificationID.identificationID
+			else:
+				col['identification'] = {}
+				
 			col['taxon'] = json.loads(serializers.serialize("json", [co.taxonID]))[0]['fields']
 			col['taxon']['taxonID'] = co.taxonID.taxonID
 			col['occurrence'] = json.loads(serializers.serialize("json", [co.occurrenceID]))[0]['fields']
