@@ -1,5 +1,15 @@
-<!--<StackLayout orientation="vertical">-->
-            <Label text="message" ></Label>
-            <!--<drawer></drawer>-->
-            <page-router-outlet></page-router-outlet>
-<!--</StackLayout>-->
+<RadSideDrawer tkExampleTitle tkToggleNavButton>
+    <StackLayout tkDrawerContent class="sideStackLayout">
+        <StackLayout class="sideTitleStackLayout">
+            <Label text="Navigation Menu"></Label>
+        </StackLayout>
+        <StackLayout class="sideStackLayout">
+            <Label text="Home" (tap)=toHome() class="sideLabel sideLightGrayLabel"></Label>
+            <Label text="About" (tap)=toAbout() class="sideLabel"></Label>
+        </StackLayout>
+    </StackLayout>
+    <StackLayout tkMainContent>
+        <Button text="OPEN DRAWER" (tap)=openDrawer()></Button>
+        <router-outlet></router-outlet>
+    </StackLayout>
+</RadSideDrawer>
