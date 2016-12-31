@@ -5,11 +5,19 @@
         </StackLayout>
         <StackLayout class="sideStackLayout">
             <Label text="Home" (tap)=toHome() class="sideLabel sideLightGrayLabel"></Label>
+            <Label text="Collections" (tap)=toCollection() class="sideLabel"></Label>
+            <Label text="   fish" (tap)=toFish() class="sideLabel"></Label>
+            <Label text="   birds" (tap)=toBird() class="sideLabel"></Label>
             <Label text="About" (tap)=toAbout() class="sideLabel"></Label>
         </StackLayout>
     </StackLayout>
     <StackLayout tkMainContent>
-        <Button text="OPEN DRAWER" (tap)=openDrawer()></Button>
-        <router-outlet></router-outlet>
+           <ActionBar title="Museum">
+        <ActionItem (tap)=openDrawer()
+      ios.systemIcon="8" ios.position="left"
+      android.systemIcon="ic_menu_share" 
+      android.position="actionBar"></ActionItem>
+        </ActionBar>
+        <page-router-outlet></page-router-outlet>
     </StackLayout>
 </RadSideDrawer>

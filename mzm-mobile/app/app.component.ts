@@ -51,6 +51,21 @@ export class AppComponent implements OnInit {
         this.router.navigate(["/home"]);
         this.drawer.closeDrawer();
     }
+    private toFish()
+    {
+        this.router.navigate(["/collection/fish"]);
+        this.drawer.closeDrawer();
+    }
+    private toBird()
+    {
+        this.router.navigate(["/collection/bird"]);
+        this.drawer.closeDrawer();
+    }
+    private toCollection()
+    {
+        this.router.navigate(["/collection/fish"]);
+        this.drawer.closeDrawer();
+    }
     private toAbout()
     {
         this.router.navigate(["/about"]);
