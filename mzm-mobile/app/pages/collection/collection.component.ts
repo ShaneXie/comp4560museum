@@ -26,7 +26,7 @@ export class CollectionComponent {
   ){
     this.collectionName = "";
     this.limit = 20;
-    this.offset = 2;
+    this.offset = 0;
   }
 
   ngOnInit() {
@@ -48,12 +48,10 @@ export class CollectionComponent {
   }
     public onItemLoading(args) {
         if (args.itemIndex % 2 == 0) {
-            args.view.backgroundColor = "#b3ecff";
-            // args.view._subViews[0].fontSize = "24";
-            // args.view._subViews[1].fontSize = "18";
+            args.view.backgroundColor = "#fcc126";
         }
         else {
-            args.view.backgroundColor = "#ccf2ff";
+            args.view.backgroundColor = "#e39308";
         }
             args.view._subViews[0].fontSize = "20";
             args.view._subViews[1].fontSize = "14";
@@ -66,7 +64,7 @@ export class CollectionComponent {
   }
   tapToDetail(items:any):void 
   {
-    console.log(JSON.stringify(items)) 
+    // console.log(JSON.stringify(items)) 
     this.router.navigate(["/collectionDetail/"+JSON.stringify(items)]);
   }
   changePage(di: number): void {

@@ -4,7 +4,7 @@
 }
 
 .sideStackLayout {
-    background-color: deepskyblue;
+    background-color:#e39308;
 }
 
 .sideTitleStackLayout {
@@ -17,5 +17,10 @@
 }
 
 .sideLightGrayLabel {
-    background-color: lightgray;
+    background-color: rgba(255,255,255,0.3);
+}
+
+.actionbarcss
+{
+    background-color: #e39308;
 }

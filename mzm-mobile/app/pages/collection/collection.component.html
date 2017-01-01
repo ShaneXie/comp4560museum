@@ -1,4 +1,16 @@
 <GridLayout tkExampleTitle tkToggleNavButton>
+     <ActionBar title="Museum" class="actionbarcss">
+        <ActionItem (tap)=changePage(-1)
+        ios.position="right"
+        text="Prev Page"
+        android.systemIcon="ic_menu_share" 
+        android.position="actionBar"></ActionItem>
+        <ActionItem (tap)=changePage(+1)
+        ios.position="right"
+        text="Next Page"
+        android.systemIcon="ic_menu_share" 
+        android.position="actionBar"></ActionItem>
+    </ActionBar>
     <!-- >> angular-angular-listview-item-loading -->
     <RadListView [items]="collections"  (itemLoading)="onItemLoading($event)">
         <!-- << angular-angular-listview-item-loading -->
