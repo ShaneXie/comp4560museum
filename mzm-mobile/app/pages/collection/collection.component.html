@@ -1,0 +1,32 @@
+<GridLayout tkExampleTitle tkToggleNavButton>
+     <ActionBar title="Museum" class="actionbarcss">
+        <ActionItem (tap)=changePage(-1)
+        ios.position="right"
+        text="Prev Page"
+        android.systemIcon="ic_menu_share" 
+        android.position="actionBar"></ActionItem>
+        <ActionItem (tap)=changePage(+1)
+        ios.position="right"
+        text="Next Page"
+        android.systemIcon="ic_menu_share" 
+        android.position="actionBar"></ActionItem>
+    </ActionBar>
+    <!-- >> angular-angular-listview-item-loading -->
+    <RadListView [items]="collections"  (itemLoading)="onItemLoading($event)">
+        <!-- << angular-angular-listview-item-loading -->
+        <template tkListItemTemplate let-item="item" >
+            <StackLayout orientation="vertical" padding="15"(tap)="tapToDetail(item)">
+                <StackLayout orientation="horizontal" padding="5">
+                <Label class="nameLabel" text="IdentificationID: "></Label>
+                <Label class="nameLabel" [text]=" item.identification.identificationID"></Label>
+                </StackLayout>
+                <StackLayout orientation="horizontal"  padding="15">
+                    <Label class="descLabel" [text]=" item.taxon.specificEpithet "></Label>
+                    <Label class="descLabel" [text]=" item.occurrence.catalogNumber "></Label>
+                    <Label class="descLabel" [text]=" item.occurrence.lifeStage "></Label>
+                    <Label class="descLabel" text]=" item.location.localityt "></Label>
+                </StackLayout>
+            </StackLayout>
+        </template>
+    </RadListView>
+</GridLayout>

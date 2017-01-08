@@ -1,0 +1,26 @@
+.drawerContentText {
+    font-size: 13;
+    padding: 10;
+}
+
+.sideStackLayout {
+    background-color:#e39308;
+}
+
+.sideTitleStackLayout {
+    padding: 10;
+    text-align: center;
+}
+
+.sideLabel {
+    padding: 10;
+}
+
+.sideLightGrayLabel {
+    background-color: rgba(255,255,255,0.3);
+}
+
+.actionbarcss
+{
+    background-color: #e39308;
+}
