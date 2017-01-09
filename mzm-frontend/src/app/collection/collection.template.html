@@ -18,26 +18,83 @@
     </div>
   </div>
   <div class="tableContainer">
-    <table class="mzm-table">
+    <table class="mzm-table mzm-table--thin">
       <tr>
         <th>identification</th>
         <th>specificEpithet</th>
         <th>catalogNumber</th>
-        <th>lifeStage</th>
         <th>locality</th>
         <th>stateProvince</th>
         <th>eventDate</th>
       </tr>
-      <tr *ngFor="let co of collections" class="mzm-row">
+      <tr *ngFor="let co of collections" class="mzm-row"
+        (click)="setCurrentRow(co)">
         <td>{{ co.identification.identificationID }}</td>
         <td>{{ co.taxon.specificEpithet }}</td>
         <td>{{ co.occurrence.catalogNumber }}</td>
-        <td>{{ co.occurrence.lifeStage }}</td>
         <td>{{ co.location.locality }}</td>
         <td>{{ co.location.stateProvince }}</td>
         <td>{{ co.event.eventDate | date:'mediumDate'}}</td>
       </tr>
     </table>
+    <div class="detialView">
+      <div class="detailViewTitle">Detail</div>
+      <div class="detailViewSectionTitle">Taxon</div>
+      <div class="detialViewItem" *ngIf="currentRow.taxon.taxonID">taxonID: {{currentRow.taxon.taxonID}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.taxon.phylum">phylum: {{currentRow.taxon.phylum}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.taxon.order">order: {{currentRow.taxon.order}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.taxon.verbatimTaxonRank">verbatimTaxonRank: {{currentRow.taxon.verbatimTaxonRank}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.taxon.acceptedNameUsage">acceptedNameUsage: {{currentRow.taxon.acceptedNameUsage}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.taxon.subgenus">subgenus: {{currentRow.taxon.subgenus}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.taxon.family">family: {{currentRow.taxon.family}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.taxon.scientificNameAuthorship">scientificNameAuthorship: {{currentRow.taxon.scientificNameAuthorship}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.taxon.genus">genus: {{currentRow.taxon.genus}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.taxon.scientificNameID">scientificNameID: {{currentRow.taxon.scientificNameID}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.taxon.kingdom">kingdom: {{currentRow.taxon.kingdom}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.taxon.specificEpithet">specificEpithet: {{currentRow.taxon.specificEpithet}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.taxon.taxon_class">class: {{currentRow.taxon.taxon_class}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.taxon.taxonRank">taxonRank: {{currentRow.taxon.taxonRank}}</div>
+      <div class="detailViewSectionTitle">Occurrence</div>
+      <div class="detialViewItem" *ngIf="currentRow.occurrence.bibliographicCitation">bibliographicCitation: {{currentRow.occurrence.bibliographicCitation}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.occurrence.collectionCode">collectionCode: {{currentRow.occurrence.collectionCode}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.occurrence.lifeStage">lifeStage: {{currentRow.occurrence.lifeStage}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.occurrence.recordedBy">recordedBy: {{currentRow.occurrence.recordedBy}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.occurrence.preparations">preparations: {{currentRow.occurrence.preparations}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.occurrence.datasetName">datasetName: {{currentRow.occurrence.datasetName}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.occurrence.sex">sex: {{currentRow.occurrence.sex}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.occurrence.catalogNumber">catalogNumber: {{currentRow.occurrence.catalogNumber}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.occurrence.occurrenceID">occurrenceID: {{currentRow.occurrence.occurrenceID}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.occurrence.occurenceRemarks">occurenceRemarks: {{currentRow.occurrence.occurenceRemarks}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.occurrence.associatedMedia">associatedMedia: {{currentRow.occurrence.associatedMedia}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.occurrence.reproductiveCondition">reproductiveCondition: {{currentRow.occurrence.reproductiveCondition}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.occurrence.recordNumber">recordNumber: {{currentRow.occurrence.recordNumber}}</div>
+      <div class="detailViewSectionTitle">Location</div>
+      <div class="detialViewItem" *ngIf="currentRow.location.verbatimLongitude">verbatimLongitude: {{currentRow.location.verbatimLongitude}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.location.stateProvince">stateProvince: {{currentRow.location.stateProvince}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.location.geodeticDatum">geodeticDatum: {{currentRow.location.geodeticDatum}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.location.country">country: {{currentRow.location.country}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.location.locality">locality: {{currentRow.location.locality}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.location.coordinateUncertaintyInMeters">coordinateUncertaintyInMeters: {{currentRow.location.coordinateUncertaintyInMeters}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.location.decimalLongitude">decimalLongitude: {{currentRow.location.decimalLongitude}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.location.verbatimCoordinates">verbatimCoordinates: {{currentRow.location.verbatimCoordinates}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.location.municipality">municipality: {{currentRow.location.municipality}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.location.verbatimLatitude">verbatimLatitude: {{currentRow.location.verbatimLatitude}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.location.verbatimElevation">verbatimElevation: {{currentRow.location.verbatimElevation}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.location.verbatimSRS">verbatimSRS: {{currentRow.location.verbatimSRS}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.location.verbatimCoordinateSystem">verbatimCoordinateSystem: {{currentRow.location.verbatimCoordinateSystem}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.location.minimumElevationInMeters">minimumElevationInMeters: {{currentRow.location.minimumElevationInMeters}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.location.decimalLatitude">decimalLatitude: {{currentRow.location.decimalLatitude}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.location.locationID">locationID: {{currentRow.location.locationID}}</div>
+      <div class="detailViewSectionTitle">Event</div>
+      <div class="detialViewItem" *ngIf="currentRow.event.habitat">habitat: {{currentRow.event.habitat}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.event.eventDate">eventDate: {{currentRow.event.eventDate}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.event.samplingProtocol">samplingProtocol: {{currentRow.event.samplingProtocol}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.event.verbatimEventDate">verbatimEventDate: {{currentRow.event.verbatimEventDate}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.event.eventID">eventID: {{currentRow.event.eventID}}</div>
+      <div class="detailViewSectionTitle">Identification</div>
+      <div class="detialViewItem" *ngIf="currentRow.identification.identificationID">identificationID: {{currentRow.identification.identificationID}}</div>
+      <div class="detialViewItem" *ngIf="currentRow.identification.identifiedBy">identifiedBy: {{currentRow.identification.identifiedBy}}</div>
+    </div>
   </div>
   <mzm-footer></mzm-footer>
 </div>

@@ -17,6 +17,7 @@ export class Collection {
   public totalPage: number;
   private limit: number;
   private offset: number;
+  public currentRow;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,6 +26,13 @@ export class Collection {
     this.collectionName = "";
     this.limit = 20;
     this.offset = 0;
+    this.currentRow = {
+      taxon: {},
+      identification: {},
+      event: {},
+      occurrence: {},
+      location: {}
+    };
   }
 
   ngOnInit() {
@@ -32,7 +40,6 @@ export class Collection {
       .subscribe((params: Params) => {
         this.collectionName = params['collectionName'];
         this.getCollections(this.collectionName);
-        console.log(this.collectionName);
       });
   }
 
@@ -43,6 +50,7 @@ export class Collection {
           this.collections = data.result;
           this.currentPage = data.current;
           this.totalPage = data.total;
+          this.currentRow = this.collections[0];
         });
   }
 
@@ -61,5 +69,9 @@ export class Collection {
       this.currentPage -= 1;
     }
     this.getCollections(this.collectionName);
+  }
+
+  setCurrentRow(rowData): void {
+    this.currentRow = rowData;
   }
 }
