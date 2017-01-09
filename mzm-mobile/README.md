@@ -39,7 +39,7 @@ By npm:
 
 verify installation by enter tns terminal:
 
-    $ tns
+    tns
 
 and you would see the following
 
@@ -49,10 +49,64 @@ and you would see the following
     │ Alias   │ $ nativescript <Command> [Command Parameters] [--command <Options>] │
     └─────────┴─────────────────────────────────────────────────────────────────────┘
 
+Check NativeScript environment
 
+    tns doctor
+
+Note:
+1.  To run android emulators, tns doctor will ask to install Android SDK.
+2.  To run iOS emulator, you need to install xCode on the environment for the official emulator. Which means you need a OSX system.
+
+#### Platform setting
+we need to setup the mobile platform for project by following cmd:
+
+iOS:
+
+    tns platform add ios
+
+Android:
+
+    tns platform add android
 
 ## How to run
 ### mzm-mobile
 
+Change the path to mzm-mobile folder to start the operation.
+
+To run on emulator:
+
+    tns run ios --emulator
+    tns run android --emulator
+
+To run on an android device(you need to open the usb debug mode from your device)
+
+    tns run android
+
+### WorkFlow
+We may need to see the changes we make during the coding.
+
+iOS emulator:
+
+    tns livesync ios --emulator --watch
+
+Android emulator:
+
+    tns livesync android --emulator --watch
+
+Android Device:
+
+    tns livesync android --watch
 
 ## Publish
+### Android
+To publish an android apk, we need a keystore file.
+For details check the [link](https://developer.android.com/studio/publish/app-signing.html#signing-manually)
+
+then use the cmd as follow:
+
+    tns build android --release --key-store-path <path-to-your-keystore> --key-store-password <your-key-store-password> --key-store-alias <your-alias-name> --key-store-alias-password <your-alias-password>
+
+### iOS
+Fisrt we need a apple developer account and xCode to sign the program.
+
+More details: [iOS publish](http://docs.nativescript.org/angular/publishing/publishing-ios-apps#creating-ios-nativescript-app)
