@@ -12,10 +12,10 @@
         </StackLayout>
     </StackLayout>
     <StackLayout tkMainContent>
-           <ActionBar title="Museum" class="actionbarcss">
+           <ActionBar title="Museum" class="actionbarcss" (tap)=openDrawer()>
         <ActionItem (tap)=openDrawer()
         ios.systemIcon="8" ios.position="left"
-        android.systemIcon="ic_menu_share" 
+        android.systemIcon="ic_menu_moreoverflow_normal_holo_light" 
         android.position="actionBar"></ActionItem>
         </ActionBar>
         <page-router-outlet></page-router-outlet>
