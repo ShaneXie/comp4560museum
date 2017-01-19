@@ -39,16 +39,38 @@ export class CollectionDetailComponent{
             item["table"] = k
             //
             var items = [];
-            for(var v in info[k])
+
+            if( typeof info[k] === 'string')
             {
+                console.log("===> "+info[k]+ "  "+k + "  "+Object.keys(info[k]).length)
                 var i = {}
-                i["key"] = v;
-                i["val"] = info[k][v]
+
+                i["key"] = k;
+                i["val"] = info[k]
                 items.push(i);
             }
+            else{
+                for(var v in info[k])
+                {
+                    var i = {}
+                    i["key"] = v;
+                    i["val"] = info[k][v]
+                    items.push(i);
+                }
+            }
+
             item["data"]=items;
             res.push(item);
         }
         this.itemjson = res;
+    }
+    private procWord(element)
+    {
+        let word = "";
+        if(element.val != null)
+        {
+            word+= element.key+"  "+element.val
+        }
+        return word
     }
 }
