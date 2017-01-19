@@ -9,8 +9,8 @@
         <StackLayout [class.odd]="odd" [class.even]="even">
             <Label [text]='item.table' class="tbname"></Label>
              <StackLayout padding=10>
-                 <!-- <Label *ngFor="let element of item.data" [text]='"\t"+element.key+" : \t"+element.val' ></Label> -->
-                 <Label *ngFor="let element of item.data" [text]="procWord(elementelement)" ></Label>
+                 <!-- <Label *ngFor="let element of item.data" [text]='"\t"+element.key+" : \t"+element.val'></Label> -->
+                 <Label *ngFor="let element of item.data" [text]="procWord(element)" ></Label>
              </StackLayout>
         </StackLayout>
     </template>
