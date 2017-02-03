@@ -1,5 +1,5 @@
 import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
-import {HttpModule} from '@angular/Http';
+// import {HttpModule} from '@angular/Http';
 
 import { NativeScriptModule } from "nativescript-angular/platform";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
@@ -30,7 +30,7 @@ import { NativeScriptHttpModule } from "nativescript-angular/http";
         NativeScriptModule,
         NativeScriptRouterModule,
         routes,
-        HttpModule,
+        // HttpModule,
         NativeScriptHttpModule
     ],
     schemas: [NO_ERRORS_SCHEMA],

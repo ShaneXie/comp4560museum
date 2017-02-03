@@ -8,13 +8,13 @@ import 'rxjs/Rx';
 export class DataService {
 
   // private headers = new Headers({'Content-Type': 'application/json'});
-  // private baseUrl = 'http://192.168.66.88:8080';  // URL to web api
-  private baseUrl = 'http://ebony.cs.umanitoba.ca';
+  private baseUrl = 'http://192.168.66.88:8080';  // URL to web api
+  // private baseUrl = 'http://ebony.cs.umanitoba.ca';
 
   constructor(private http: Http) { }
 
   getCollections(collectionName: string, offset: number, limit: number): Promise<any> {
-    let theUrl = this.baseUrl +"/collection/"+collectionName+"/?limit="+limit+"&offset="+offset;  
+    let theUrl = this.baseUrl +"/collection/"+collectionName+"/?limit="+limit+"&offset="+offset;
     console.log("getcollections ===="+theUrl+ '${this.baseUrl}/collection/${collectionName}/?limit=${limit}&offset=${offset}')
     return this.http.get(theUrl)
                .toPromise()
@@ -22,22 +22,10 @@ export class DataService {
                .catch(this.handleError);
   }
 
-  // getCollections(collectionName: string, offset: number, limit: number) {
-  //   let theUrl = this.baseUrl +"/collection/"+collectionName+"/?limit="+limit+"&offset="+offset;  
-  //   console.log("getcollections ===="+theUrl+ '${this.baseUrl}/collection/${collectionName}/?limit=${limit}&offset=${offset}')
-  //   return this.http.get(theUrl)
-  //                   .map(res => res.json()
-  //                   );
-             
-  // }
 
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
   }
-  // private extractData(res: any) {
-  //   let body = res.json();
-  //     return body || { };
-  // }
-  
+
 }
