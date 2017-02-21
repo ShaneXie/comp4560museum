@@ -18,7 +18,12 @@ export class DataService {
     console.log("getcollections ===="+theUrl+ '${this.baseUrl}/collection/${collectionName}/?limit=${limit}&offset=${offset}')
     return this.http.get(theUrl)
                .toPromise()
-               .then(response => response.json())
+               .then(response => {
+                 if(response){
+                     alert("test")
+                     return response.json();
+                 }
+               })
                .catch(this.handleError);
   }
 

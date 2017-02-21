@@ -7,8 +7,8 @@ import 'rxjs/add/operator/toPromise';
 export class DataService {
 
   // private headers = new Headers({'Content-Type': 'application/json'});
-  //private baseUrl = 'http://192.168.66.88:8000';  // URL to web api
-  private baseUrl = 'http://ebony.cs.umanitoba.ca';
+  private baseUrl = 'http://192.168.66.88:8080';  // URL to web api
+  // private baseUrl = 'http://ebony.cs.umanitoba.ca';
 
   constructor(private http: Http) { }
 

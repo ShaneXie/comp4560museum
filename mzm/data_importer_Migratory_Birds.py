@@ -67,7 +67,7 @@ if __name__ == '__main__':
             taxonID = taxon,
             occurrenceID = occurrence,
             type = data[2].value,
-            collectionName = 'fish'
+            collectionName = 'Migratory_Birds'
         )
         root.save()
     print("all bird data imported into database.")
